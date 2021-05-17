@@ -3,16 +3,15 @@ import { FC } from "react";
 
 type texttittleProps = {
   size?: string;
-  color?: "black" | "white";
+  color?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  fweight?:"bold" |"normal"
 };
 
-const AtomTextTittleProps = `
-
-`;
-
-
-const Component = styled.div<texttittleProps>` 
+const Component = styled.h1<texttittleProps>` 
+  font-size: ${({ size }) => size || "44px"};
+  color: ${({ color }) => color || "#3C3E42"};
+  font-weight:${({fweight}) => fweight || "normal"} ;
 `;
 
 const AtomTextTittle: FC<texttittleProps> = (props) => {
