@@ -4,17 +4,15 @@ import { FC } from "react";
 type ButtonProps = {
   color?: string;
   outline?: boolean;
-  padding?: string;
+  padding?: [string,string];
   link?: string;
   href?: string;
-  margin?: string;
 };
 
 const ButtonStyled = styled.button<ButtonProps>`
   background-color: ${({ outline, color }) =>
     outline ? "transparent" : color};
-  padding: ${({ padding }) => padding ||"3px"};
-  margin: ${({ margin }) => margin || "0px"};
+  padding: ${({ padding }) => padding? `${padding[0]} ${padding[1]}` :"3px"};
   border: 1px solid ${({ color }) => color || "black"};
   &:hover {
     background-color: ${({ outline, color }) =>
