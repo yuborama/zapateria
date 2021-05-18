@@ -10,20 +10,18 @@ type AtomContainerProps = {
     | "space-between"
     | "space-around"
     | "space-evenly";
-  fullwidth?: boolean;
   flexDirection?: "row" | "column" | "row-reverse" | "column-reverse";
   backgroudColor?: string;
-  margin?: [string, string];
-  padding?: [string, string];
+  margin?: string;
+  padding?: string;
 };
 
 const Container = styled.section<AtomContainerProps>`
-  max-width: 1440px;
+  width: 100%;
   height: 100%;
   display: flex;
-  margin: ${({ margin }) => (margin ? `${margin[0]} ${margin[1]}` : "0px 0px")};
-  padding: ${({ padding }) => padding ? `${padding[0]} ${padding[1]}` : "0px"};
-  ${({ fullwidth }) => fullwidth && { width: "100%" }}
+  margin: ${({ margin }) => (margin || "0px")};
+  padding: ${({ padding }) => padding ||"0px"};
   flex-direction: ${({ flexDirection }) => flexDirection || "row"};
   align-items: ${({ alignItems }) => alignItems || "flex-start"};
   justify-content: ${({ justifyContent }) => justifyContent || "flex-start"};

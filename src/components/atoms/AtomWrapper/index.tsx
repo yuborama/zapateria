@@ -13,15 +13,19 @@ type AtomWrapperProps = {
   fullwidth?: boolean;
   flexDirection?: "row" | "column" | "row-reverse" | "column-reverse";
   backgroudColor?: string;
-  margin?: [string, string];
-  padding?: [string, string];
+  margin?: string;
+  padding?: string;
+  width?: string;
+  height?: string;
 };
 
 const Container = styled.div<AtomWrapperProps>`
-  height: 100%;
+  height: ${({ height }) => (height || "100%")};
+  width: ${({ width }) => (width || "100%")};
   display: flex;
-  margin: ${({ margin }) => (margin ? `${margin[0]} ${margin[1]}` : "0px")};
-  padding: ${({ padding }) => padding ? `${padding[0]} ${padding[1]}` : "0px"};
+  position: relative;   
+  margin: ${({ margin }) => (margin || "0px")};
+  padding: ${({ padding }) => padding || "0px"};
   flex-direction: ${({ flexDirection }) => flexDirection || "row"};
   align-items: ${({ alignItems }) => alignItems || "flex-start"};
   justify-content: ${({ justifyContent }) => justifyContent || "flex-start"};
