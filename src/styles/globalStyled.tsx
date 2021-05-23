@@ -23,6 +23,7 @@ const GlobalStyles = () => (
       body {
         background-color: #fafafa;
         overflow-x: hidden;
+        margin-top: 85px;
       }
 
       blockquote,
