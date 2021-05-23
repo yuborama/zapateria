@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {css} from "@emotion/react";
 import { FC } from "react";
 
 type textbodyProps = {
@@ -7,6 +8,7 @@ type textbodyProps = {
   opacity?: number;
   margin?: string;
   padding?: string;
+  cursorPointer?: boolean;
   fontweight?:
     | "Thin"
     | "Extra-ligth"
@@ -28,6 +30,7 @@ const Component = styled.p<textbodyProps>`
   opacity: ${({ opacity }) => opacity || 100};
   margin: ${({ margin }) => margin || "0px"};
   padding: ${({ padding }) => padding || "0px"};
+  ${({cursorPointer}) => (cursorPointer && css`cursor: pointer;`)}
 `;
 
 const AtomTextBody: FC<textbodyProps> = (props) => {
