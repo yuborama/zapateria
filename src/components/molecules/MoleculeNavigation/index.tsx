@@ -3,7 +3,6 @@ import AtomIcon from "@Src/components/atoms/AtomIcon";
 import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { FC, useEffect, useState } from "react";
-import Link from "next/Link";
 import { Linkstyled, Nav } from "./styled";
 type MoleculeNavigationPros = {};
 // const [scrollY, setScrollY] = useState(false);
