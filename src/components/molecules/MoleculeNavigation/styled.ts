@@ -6,10 +6,3 @@ width: 100vw;
 position: fixed;
 z-index: 1000;
 `;
-
-export const Linkstyled = styled(Link)` 
-        text-decoration: none;
-    a{ 
-        text-decoration: none;
-    }
-`;
