@@ -1,13 +1,20 @@
 import AtomIcon from "@Src/components/atoms/AtomIcon";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
-import { FC, useState } from "react";
+import { ContextCar, ItemCarShopProps } from "@Src/hooks/contextCarShop";
+import { FC, useContext, useEffect, useState } from "react";
 import MoleculeItemList from "../MoleculeItemList";
-import { ListDropdowStyled } from "./Styled";
+import { ListDropdowStyled } from "./styled";
 
 type MoleculeCarShopProps = {};
 
 const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
   const [Dropdown, setDropdown] = useState(false);
+  const { carShop, setCarShop } = useContext(ContextCar);
+  const [carshow, setcarshow] = useState<ItemCarShopProps[]>([]);
+  useEffect(() => {
+    setcarshow(carShop);
+  }, [carShop]);
+
   return (
     <>
       <AtomWrapper>
@@ -17,21 +24,13 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
       </AtomWrapper>
       {Dropdown && (
         <ListDropdowStyled>
-          <MoleculeItemList
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621303862/zapateria/card1_m9rr7t.png"
-            preci={15000}
-            name="Sneaker patito azul Air 2021"
-          />
-          <MoleculeItemList
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621303862/zapateria/card1_m9rr7t.png"
-            preci={25000}
-            name="Sneaker patito azul Air 2021"
-          />
-          <MoleculeItemList
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621303862/zapateria/card1_m9rr7t.png"
-            preci={10000}
-            name="Sneaker patito azul Air 2021"
-          />
+          {carshow.length === 0 ? (
+            <p>no hay datos</p>
+          ) : (
+            carshow.map((e) => (
+              <MoleculeItemList image={e.image} preci={e.preci} name={e.name} />
+            ))
+          )}
         </ListDropdowStyled>
       )}
     </>

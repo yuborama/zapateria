@@ -8,6 +8,7 @@ type ButtonProps = {
   link?: string;
   href?: string;
   margin?: string;
+  onClick?: ()=>void; 
 };
 
 const ButtonStyled = styled.button<ButtonProps>`

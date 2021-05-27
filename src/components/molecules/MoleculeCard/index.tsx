@@ -4,7 +4,8 @@ import AtomIcon from "@Src/components/atoms/AtomIcon";
 import AtomImage from "@Src/components/atoms/AtomImage";
 import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
-import { FC } from "react";
+import { ContextCar } from "@Src/hooks/contextCarShop";
+import { FC, useContext } from "react";
 
 type MoleculeCardProps = {
   image: string;
@@ -46,6 +47,7 @@ const Icon = styled(AtomIcon)`
 `;
 
 const MoleculeCard: FC<MoleculeCardProps> = (props) => {
+  const {carShop,setCarShop} = useContext(ContextCar)
   const { image, name, collection, preci, discount, sizes } = props;
   return (
     <Card {...props}>
@@ -94,8 +96,12 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
         </AtomTextBody>
       )}
       {sizes && (
-        <AtomButton color="#38A6AD" padding="16px 20px">
-          <AtomTextBody size="16px" color="#FFFFFF">
+        <AtomButton onClick={()=> {
+         const newCarShop = carShop;
+         newCarShop.push({image,preci:discount? preci - preci * (discount / 100):preci,name})
+         setCarShop(newCarShop)
+        }} color="#38A6AD" padding="16px 20px">
+          <AtomTextBody  size="16px" color="#FFFFFF">
             Añadir al carrito
           </AtomTextBody>
         </AtomButton>
