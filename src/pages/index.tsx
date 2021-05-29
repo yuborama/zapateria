@@ -5,6 +5,7 @@ import AtomTextTittle from "@Src/components/atoms/AtomTextTittle";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import MoleculeCard from "@Src/components/molecules/MoleculeCard";
 import MoleculeNavigation from "@Src/components/molecules/MoleculeNavigation";
+import SectionContact from "@Src/components/sections/contactus";
 import SectionWelcome from "@Src/components/sections/welcome";
 import GlobalStyles from "@Src/styles/globalStyled";
 
@@ -18,13 +19,13 @@ interface DataGetProps {
   discount?: number;
   sizes: string[];
 }
-type Data={
-  data:DataGetProps[],
-  discount:DataGetProps[]
-}
+type Data = {
+  data: DataGetProps[];
+  discount: DataGetProps[];
+};
 
 const index: FC = () => {
-  const [Data, setData] = useState<Data>({data:[],discount:[]});
+  const [Data, setData] = useState<Data>({ data: [], discount: [] });
   useEffect(() => {
     const DataFake = async () => {
       const data: DataGetProps[] = await fetch("/Data.json")
@@ -88,13 +89,7 @@ const index: FC = () => {
           </AtomTextBody>
         </AtomButton>
       </AtomContainer>
-      <AtomContainer>
-        <AtomWrapper
-          height="300px"
-          backgroudColor="#252628"
-          id="Contacto"
-        ></AtomWrapper>
-      </AtomContainer>
+      <SectionContact />
     </>
   );
 };
