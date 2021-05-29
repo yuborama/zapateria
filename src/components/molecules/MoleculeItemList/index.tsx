@@ -41,7 +41,6 @@ const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
         </button>
       </AtomWrapper>
       <AtomTextBody size="21px" fontweight="Bold" color="red">
-        {" "}
         $ {Intl.NumberFormat().format(preci * Cantidad)} COP
       </AtomTextBody>
     </ItemListStyled>

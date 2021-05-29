@@ -1,4 +1,5 @@
 import AtomIcon from "@Src/components/atoms/AtomIcon";
+import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { ContextCar, ItemCarShopProps } from "@Src/hooks/contextCarShop";
 import { FC, useContext, useEffect, useState } from "react";
@@ -17,7 +18,7 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
 
   return (
     <>
-      <AtomWrapper>
+      <AtomWrapper width="200px">
         <button onClick={() => setDropdown(!Dropdown)}>
           <AtomIcon icon="carshop" />
         </button>
@@ -25,7 +26,9 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
       {Dropdown && (
         <ListDropdowStyled>
           {carshow.length === 0 ? (
-            <p>no hay datos</p>
+            <AtomWrapper backgroudColor="#E2E0E0" justifyContent="center" alignItems="center">
+              <AtomTextBody>No hay productos en el carrito</AtomTextBody>
+            </AtomWrapper>
           ) : (
             carshow.map((e) => (
               <MoleculeItemList image={e.image} preci={e.preci} name={e.name} />
