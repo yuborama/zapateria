@@ -14,6 +14,7 @@ type AtomContainerProps = {
   backgroudColor?: string;
   margin?: string;
   padding?: string;
+  id?: string;
 };
 
 const Container = styled.section<AtomContainerProps>`
