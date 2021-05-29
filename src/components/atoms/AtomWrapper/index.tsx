@@ -21,6 +21,7 @@ type AtomWrapperProps = {
   height?: string;
   gap?: string;
   id?: string;
+  flexwrap?: "wrap"|"nowrap";
 };
 
 const Container = styled.div<AtomWrapperProps>`
@@ -36,6 +37,7 @@ const Container = styled.div<AtomWrapperProps>`
   justify-content: ${({ justifyContent }) => justifyContent || "flex-start"};
   background-color: ${({ backgroudColor }) => backgroudColor || "transparent"};
   gap:  ${({ gap }) => gap || "0px"};
+  flex-wrap: ${({ flexwrap }) => flexwrap || "nowrap"};
 `;
 
 const AtomWrapper: FC<AtomWrapperProps> = (props) => {
