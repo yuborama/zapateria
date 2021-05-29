@@ -8,30 +8,28 @@ type ButtonProps = {
   link?: string;
   href?: string;
   margin?: string;
+  hovercolor?: string;
+  onClick?: () => void;
 };
 
 const ButtonStyled = styled.button<ButtonProps>`
   background-color: ${({ outline, color }) =>
     outline ? "transparent" : color};
-  padding: ${({ padding }) => padding ||"3px"};
+  padding: ${({ padding }) => padding || "3px"};
   margin: ${({ margin }) => margin || "0px"};
   border: 1px solid ${({ color }) => color || "black"};
   &:hover {
-    background-color: ${({ outline, color }) =>
-      outline ? color : "transparent"};
+    background-color: ${({ outline, color, hovercolor }) =>
+      outline ? hovercolor || color : hovercolor || "transparent"};
   }
 `;
 
 const AtomButton: FC<ButtonProps> = (props) => {
-  const {children ,href}=props 
-    return href ? (
-    <ButtonStyled {...props}>
-      {children || "Default Text"}
-    </ButtonStyled>
+  const { children, href } = props;
+  return href ? (
+    <ButtonStyled {...props}>{children || "Default Text"}</ButtonStyled>
   ) : (
-    <ButtonStyled  {...props}>
-      {children || "Default Text"}
-    </ButtonStyled>
+    <ButtonStyled {...props}>{children || "Default Text"}</ButtonStyled>
   );
 };
 

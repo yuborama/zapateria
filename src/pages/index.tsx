@@ -5,16 +5,43 @@ import AtomTextTittle from "@Src/components/atoms/AtomTextTittle";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import MoleculeCard from "@Src/components/molecules/MoleculeCard";
 import MoleculeNavigation from "@Src/components/molecules/MoleculeNavigation";
+import SectionContact from "@Src/components/sections/contactus";
 import SectionWelcome from "@Src/components/sections/welcome";
 import GlobalStyles from "@Src/styles/globalStyled";
-import { FC } from "react";
 
-interface Props {}
+import { FC, useEffect, useState } from "react";
 
-const index: FC<Props> = () => {
+interface DataGetProps {
+  image: string;
+  name: string;
+  collection: string;
+  preci: number;
+  discount?: number;
+  sizes: string[];
+}
+type Data = {
+  data: DataGetProps[];
+  discount: DataGetProps[];
+};
+
+const index: FC = () => {
+  const [Data, setData] = useState<Data>({ data: [], discount: [] });
+  useEffect(() => {
+    const DataFake = async () => {
+      const data: DataGetProps[] = await fetch("/Data.json")
+        .then((response) => response.json())
+        .then((data) => data);
+      setData({
+        data: data.filter((e) => !e.discount),
+        discount: data.filter((e) => e.discount),
+      });
+    };
+    DataFake();
+  }, []);
+  console.log(Data);
   return (
     <>
-    <MoleculeNavigation></MoleculeNavigation>
+      <MoleculeNavigation></MoleculeNavigation>
       <SectionWelcome />
       <AtomContainer
         flexDirection="column"
@@ -33,63 +60,36 @@ const index: FC<Props> = () => {
           Las mejores marcas del mercado disponible para ti, al alcance de un
           click y con los mejores precios.
         </AtomTextBody>
-
-        <AtomWrapper display="grid" columns={4} >
-          <MoleculeCard
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621303862/zapateria/card1_m9rr7t.png"
-            name="Sneaker patito azul Air 2021"
-            collection="Master Craig edition"
-            preci={250000}
-            width="307px"
-            margin="12px 10px"
-          />{" "}
-          <MoleculeCard
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621303862/zapateria/card1_m9rr7t.png"
-            name="Sneaker patito azul Air 2021"
-            collection="Master Craig edition"
-            preci={250000}
-            width="307px"
-            margin="12px 10px"
-          />{" "}
-          <MoleculeCard
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621303862/zapateria/card1_m9rr7t.png"
-            name="Sneaker patito azul Air 2021"
-            collection="Master Craig edition"
-            preci={250000}
-            width="307px"
-            margin="12px 10px"
-          />
-          <MoleculeCard
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621317723/zapateria/card2_chrzi6.png"
-            name="Sneaker patito azul Air 2021"
-            collection="Master Craig edition"
-            preci={250000}
-            width="307px"
-            margin="12px 10px"
-          />
-          <MoleculeCard
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621317723/zapateria/card2_chrzi6.png"
-            name="Sneaker patito azul Air 2021"
-            collection="Master Craig edition"
-            preci={250000}
-            width="307px"
-            margin="12px 10px"
-          />
-          <MoleculeCard
-            image="https://res.cloudinary.com/yuborama/image/upload/v1621317723/zapateria/card2_chrzi6.png"
-            name="Sneaker patito azul Air 2021"
-            collection="Master Craig edition"
-            preci={250000}
-            width="307px"
-            margin="12px 10px"
-          />
+        <AtomWrapper display="grid" columns={4}>
+          {Data.data.map((e) => (
+            <MoleculeCard
+              image={e.image}
+              name={e.name}
+              collection={e.collection}
+              preci={e.preci}
+              width="307px"
+              margin="12px 10px"
+            />
+          ))}
+          {Data.discount.map((e) => (
+            <MoleculeCard
+              image={e.image}
+              name={e.name}
+              collection={e.collection}
+              preci={e.preci}
+              width="307px"
+              margin="12px 10px"
+              discount={e.discount}
+            />
+          ))}
         </AtomWrapper>
-        <AtomWrapper height="300px" backgroudColor="#252628" id="Contacto">
-
-
-        </AtomWrapper>
+        <AtomButton color="#38A6AD" padding="16px 20px">
+          <AtomTextBody size="16px" color="#FFFFFF">
+            Ver productos
+          </AtomTextBody>
+        </AtomButton>
       </AtomContainer>
-
+      <SectionContact />
     </>
   );
 };

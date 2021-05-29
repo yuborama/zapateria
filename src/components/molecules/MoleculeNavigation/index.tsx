@@ -5,7 +5,6 @@ import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { FC, useEffect, useState } from "react";
 import { Linkstyled, Nav } from "./styled";
 type MoleculeNavigationPros = {};
-// const [scrollY, setScrollY] = useState(false);
 const scrollToUp = () => {
   document.body.scrollTo({
     top: 0,
@@ -29,36 +28,51 @@ const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
       >
         <AtomWrapper height="85px" alignItems="center" gap="24px">
           <Linkstyled href="/">
-              <AtomTextBody size="18px" color="#FFFFFF" fontweight="Bold" cursorPointer>
-                Forever_19
-              </AtomTextBody>
+            <AtomTextBody size="18px" color="#FFFFFF" fontweight="Bold" cursorPointer>
+              Forever_19
+            </AtomTextBody>
           </Linkstyled>
-          <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-            Productos
-          </AtomTextBody>
+          <Linkstyled href="/products">
+            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+              Productos
+            </AtomTextBody>
+          </Linkstyled>
           <Linkstyled href="/about">
             <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
               Nosotros
             </AtomTextBody>
           </Linkstyled>
           <Linkstyled href="/#Contacto">
-              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-                Contacto
-              </AtomTextBody>
+            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+              Contacto
+            </AtomTextBody>
           </Linkstyled>
         </AtomWrapper>
         <AtomWrapper alignItems="center" justifyContent="flex-end" gap="24px">
           <AtomWrapper width="16px" height="16px">
-            <AtomIcon icon="whatsapp" />
+            <a href="https://wa.me/573219729519" target="_blanck">
+              <AtomIcon icon="whatsapp" />
+            </a>
           </AtomWrapper>
           <AtomWrapper width="16px" height="16px">
-            <AtomIcon icon="instagram" />
+            <a
+              href="https://instagram.com/forevers19_?igshid=1c5mzd4ax9bjm"
+              target="_blank"
+            >
+              <AtomIcon icon="instagram" />
+            </a>
           </AtomWrapper>
           <AtomWrapper width="16px" height="16px">
             <AtomIcon icon="telefono" />
           </AtomWrapper>
           <AtomWrapper width="16px" height="16px">
-            <AtomIcon icon="facebook" />
+            <a
+              href="https://www.facebook.com/Forevers19_-103586351735804/?ti=as"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AtomIcon icon="facebook" />
+            </a>
           </AtomWrapper>
         </AtomWrapper>
       </AtomContainer>

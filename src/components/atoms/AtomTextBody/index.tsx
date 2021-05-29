@@ -9,6 +9,7 @@ type textbodyProps = {
   margin?: string;
   padding?: string;
   cursorPointer?: boolean;
+  linethrough?: boolean;
   fontweight?:
     | "Thin"
     | "Extra-ligth"
@@ -31,6 +32,7 @@ const Component = styled.p<textbodyProps>`
   margin: ${({ margin }) => margin || "0px"};
   padding: ${({ padding }) => padding || "0px"};
   ${({cursorPointer}) => (cursorPointer && css`cursor: pointer;`)}
+  ${({linethrough})=>(linethrough && css`text-decoration:line-through;`)}  
 `;
 
 const AtomTextBody: FC<textbodyProps> = (props) => {
