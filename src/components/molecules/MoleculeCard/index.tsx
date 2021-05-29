@@ -72,12 +72,12 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
           <AtomImage image={image} height="216px" />
         )}
       </WrapperCardStyled>
-      <AtomTextBody size="16px">{name}</AtomTextBody>
+      <AtomTextBody size="16px" margin="11px 0px">{name}</AtomTextBody>
       <AtomTextBody color="#797B80" size="14px">
         {collection}
       </AtomTextBody>
       {discount ? (
-        <AtomWrapper>
+        <AtomWrapper margin="11px 0px">
           <AtomTextBody
             size="14px"
             fontweight="Bold"
@@ -91,7 +91,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
           </AtomTextBody>
         </AtomWrapper>
       ) : (
-        <AtomTextBody size="14px" fontweight="Bold">
+        <AtomTextBody size="14px" fontweight="Bold" margin="11px 0px">
           $ {Intl.NumberFormat().format(preci)} COP
         </AtomTextBody>
       )}
@@ -100,7 +100,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
          const newCarShop = carShop;
          newCarShop.push({image,preci:discount? preci - preci * (discount / 100):preci,name})
          setCarShop(newCarShop)
-        }} color="#38A6AD" padding="16px 20px">
+        }} color="#38A6AD" hovercolor="#000000" padding="16px 20px">
           <AtomTextBody  size="16px" color="#FFFFFF">
             Añadir al carrito
           </AtomTextBody>
