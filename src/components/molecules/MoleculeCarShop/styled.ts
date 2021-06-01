@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const ListDropdowStyled = styled.div`
     width: 705px;
-    height: 550px;
+    height: auto;
+    max-height: 450px;
     display: flex;
     flex-direction: column;
     position: absolute;
