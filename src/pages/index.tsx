@@ -8,6 +8,7 @@ import MoleculeNavigation from "@Src/components/molecules/MoleculeNavigation";
 import SectionContact from "@Src/components/sections/contactus";
 import SectionWelcome from "@Src/components/sections/welcome";
 import GlobalStyles from "@Src/styles/globalStyled";
+import Link from "next/link";
 
 import { FC, useEffect, useState } from "react";
 
@@ -86,11 +87,13 @@ const index: FC = () => {
             />
           ))}
         </AtomWrapper>
+        <Link href="/products">
         <AtomButton color="#38A6AD" padding="16px 20px">
           <AtomTextBody size="16px" color="#FFFFFF">
             Ver productos
           </AtomTextBody>
         </AtomButton>
+        </Link>
       </AtomContainer>
       <SectionContact />
     </>
