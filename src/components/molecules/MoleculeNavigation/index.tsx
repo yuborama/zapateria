@@ -13,6 +13,7 @@ const scrollToUp = () => {
     behavior: `smooth`,
   });
 };
+
 const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
   useEffect(() => {
     scrollToUp();
