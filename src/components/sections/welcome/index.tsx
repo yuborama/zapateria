@@ -5,7 +5,7 @@ import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomTextTittle from "@Src/components/atoms/AtomTextTittle";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { FC } from "react";
-
+import Link from "next/link";
 type SectionWelcomeProps = {}
 
 
@@ -28,16 +28,20 @@ const SectionWelcome: FC<SectionWelcomeProps> = () => {
           mercado para todos los gustos y edades.
         </AtomTextBody>
         <AtomWrapper margin="32px 0px 0px 0px">
+          <Link href="/products">
           <AtomButton color="#38A6AD" padding="16px 20px">
-            <AtomTextBody size="16px" color="#FFFFFF">
+            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
               Ver nuestros productos
             </AtomTextBody>
           </AtomButton>
-          <AtomButton color="#FFFFFF" outline padding="16px 32px" margin="0px 0px 0px 16px">
-            <AtomTextBody size="16px" color="#FFFFFF">
+          </Link>
+          <Link href="#Contacto">
+          <AtomButton color="#FFFFFF" outline padding="16px 32px" margin="0px 0px 0px 16px" >
+            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
               Contacto
             </AtomTextBody>
           </AtomButton>
+          </Link>
         </AtomWrapper>
       </AtomWrapper>
       <AtomWrapper width="647px">

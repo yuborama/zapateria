@@ -8,10 +8,12 @@ import MoleculeNavigation from "@Src/components/molecules/MoleculeNavigation";
 import SectionContact from "@Src/components/sections/contactus";
 import SectionWelcome from "@Src/components/sections/welcome";
 import GlobalStyles from "@Src/styles/globalStyled";
+import Link from "next/link";
 
 import { FC, useEffect, useState } from "react";
 
 interface DataGetProps {
+  id: string;
   image: string;
   name: string;
   collection: string;
@@ -63,6 +65,7 @@ const index: FC = () => {
         <AtomWrapper display="grid" columns={4}>
           {Data.data.map((e) => (
             <MoleculeCard
+              id = {e.id}
               image={e.image}
               name={e.name}
               collection={e.collection}
@@ -73,6 +76,7 @@ const index: FC = () => {
           ))}
           {Data.discount.map((e) => (
             <MoleculeCard
+              id= {e.id}
               image={e.image}
               name={e.name}
               collection={e.collection}
@@ -83,11 +87,13 @@ const index: FC = () => {
             />
           ))}
         </AtomWrapper>
+        <Link href="/products">
         <AtomButton color="#38A6AD" padding="16px 20px">
           <AtomTextBody size="16px" color="#FFFFFF">
             Ver productos
           </AtomTextBody>
         </AtomButton>
+        </Link>
       </AtomContainer>
       <SectionContact />
     </>

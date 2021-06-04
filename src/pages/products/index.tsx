@@ -8,6 +8,7 @@ import MoleculeNavigation from "@Src/components/molecules/MoleculeNavigation";
 import { FC, useEffect, useState } from "react";
 
 interface DataGetProps {
+  id: string;
   image: string;
   name: string;
   collection: string;
@@ -69,6 +70,7 @@ const Products: FC = () => {
             {seacrh === ""
               ? Data.data.map((e) => (
                   <MoleculeCard
+                    id={e.id}
                     image={e.image}
                     name={e.name}
                     collection={e.collection}
@@ -81,6 +83,7 @@ const Products: FC = () => {
                 ))
               : productsShow.map((e) => (
                   <MoleculeCard
+                    id={e.id}
                     image={e.image}
                     name={e.name}
                     collection={e.collection}
