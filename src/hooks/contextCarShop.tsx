@@ -6,6 +6,7 @@ export interface ItemCarShopProps {
     preci: number;
     name: string;
     quanti: number;
+    size: string;
   };
 
 interface IContextProps {

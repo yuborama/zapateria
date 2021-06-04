@@ -5,10 +5,11 @@ import AtomImage from "@Src/components/atoms/AtomImage";
 import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { ContextCar } from "@Src/hooks/contextCarShop";
-import { FC, useContext } from "react";
+import { Console } from "console";
+import { FC, useContext, useState } from "react";
 
 type MoleculeCardProps = {
-  id: string;
+  id?: string;
   image: string;
   name: string;
   collection: string;
@@ -49,7 +50,9 @@ const Icon = styled(AtomIcon)`
 
 const MoleculeCard: FC<MoleculeCardProps> = (props) => {
   const { carShop, setCarShop } = useContext(ContextCar);
+
   const { id, image, name, collection, preci, discount, sizes } = props;
+  const [size, setsize] = useState("default");
   return (
     <Card {...props}>
       <WrapperCardStyled>
@@ -63,9 +66,15 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
         {sizes ? (
           <>
             <AtomImage image={image} height="216px" />
-            <select name="talla" id="talla">
+            <select
+              onChange={(e) => setsize(e.target.value)}
+              name="talla"
+              id="talla"
+              value={size}
+            >
+              <option value="defaul">selecione.</option>
               {sizes.map((e) => (
-                <option value="">Talla {e}</option>
+                <option value={e}>Talla {e}</option>
               ))}
             </select>
           </>
@@ -101,23 +110,26 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
       {sizes && (
         <AtomButton
           onClick={() => {
-            // console.log(talla)
-            const newCarShop = carShop;
-            const item = carShop.filter((item) => item.id == id);
-            item.length == 0
-              ? newCarShop.push({
-                  quanti: 1,
-                  id,
-                  image,
-                  preci: discount ? preci - preci * (discount / 100) : preci,
-                  name,
-                })
-              : newCarShop.forEach((item) => {
-                  if (item.id == id) {
-                    item.quanti++;
-                  }
-                });
-            setCarShop(newCarShop);
+            if (size !== "default") {
+              console.log(size)
+              const newCarShop = carShop;
+              const item = carShop.filter((item) => item.id == id && item.size==size);
+              item.length == 0
+                ? newCarShop.push({
+                    quanti: 1,
+                    id: id || "0",
+                    image,
+                    preci: discount ? preci - preci * (discount / 100) : preci,
+                    name,
+                    size
+                  })
+                : newCarShop.forEach((item) => {
+                    if (item.id == id) {
+                      item.quanti++;
+                    }
+                  });
+              setCarShop(newCarShop);
+            }
           }}
           color="#38A6AD"
           hovercolor="#000000"

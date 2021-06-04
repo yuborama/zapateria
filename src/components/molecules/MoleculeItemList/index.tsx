@@ -12,11 +12,12 @@ type MoleculeItemListProps = {
   name: string;
   preci: number;
   quanti: number;
+  size: string;
 };
 
 const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
   const { carShop, setCarShop } = useContext(ContextCar);
-  const { id, image, name, preci, quanti } = props;
+  const { id, image, name, preci, quanti, size } = props;
   const [Cantidad, setCantidad] = useState(quanti);
   return (
     <ItemListStyled>
@@ -25,9 +26,14 @@ const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
         <AtomTextBody size="16px" fontweight="Bold">
           {name}
         </AtomTextBody>
-        <AtomTextBody size="14px" fontweight="Bold" color="red">
-          $ {Intl.NumberFormat().format(preci)} COP
-        </AtomTextBody>
+        <AtomWrapper gap=".3rem">
+          <AtomTextBody size="14px" fontweight="Bold" color="red">
+            $ {Intl.NumberFormat().format(preci)} COP
+          </AtomTextBody>
+          <AtomTextBody size="14px" fontweight="Bold" color="#0000000">
+            Talla {size}
+          </AtomTextBody>
+        </AtomWrapper>
       </AtomWrapper>
       <AtomWrapper flexDirection="column" width="18px">
         <button
@@ -64,10 +70,14 @@ const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
       <AtomTextBody size="21px" fontweight="Bold" color="red">
         $ {Intl.NumberFormat().format(preci * Cantidad)} COP
       </AtomTextBody>
-      <button onClick={()=>{
-        const newCarShop = carShop.filter((item) => item.id != id);
-        setCarShop(newCarShop);
-      }}>X</button>
+      <button
+        onClick={() => {
+          const newCarShop = carShop.filter((item) => item.id != id);
+          setCarShop(newCarShop);
+        }}
+      >
+        X
+      </button>
     </ItemListStyled>
   );
 };
