@@ -12,6 +12,7 @@ import GlobalStyles from "@Src/styles/globalStyled";
 import { FC, useEffect, useState } from "react";
 
 interface DataGetProps {
+  id: string;
   image: string;
   name: string;
   collection: string;
@@ -63,6 +64,7 @@ const index: FC = () => {
         <AtomWrapper display="grid" columns={4}>
           {Data.data.map((e) => (
             <MoleculeCard
+              id = {e.id}
               image={e.image}
               name={e.name}
               collection={e.collection}
@@ -73,6 +75,7 @@ const index: FC = () => {
           ))}
           {Data.discount.map((e) => (
             <MoleculeCard
+              id= {e.id}
               image={e.image}
               name={e.name}
               collection={e.collection}

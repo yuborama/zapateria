@@ -1,9 +1,11 @@
 import { createContext, Dispatch, FC, SetStateAction, useState } from "react";
 
 export interface ItemCarShopProps {
+    id: string;
     image: string;
     preci: number;
     name: string;
+    quanti: number;
   };
 
 interface IContextProps {

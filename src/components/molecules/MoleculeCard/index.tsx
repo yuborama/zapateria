@@ -8,6 +8,7 @@ import { ContextCar } from "@Src/hooks/contextCarShop";
 import { FC, useContext } from "react";
 
 type MoleculeCardProps = {
+  id: string;
   image: string;
   name: string;
   collection: string;
@@ -47,8 +48,8 @@ const Icon = styled(AtomIcon)`
 `;
 
 const MoleculeCard: FC<MoleculeCardProps> = (props) => {
-  const {carShop,setCarShop} = useContext(ContextCar)
-  const { image, name, collection, preci, discount, sizes } = props;
+  const { carShop, setCarShop } = useContext(ContextCar);
+  const { id, image, name, collection, preci, discount, sizes } = props;
   return (
     <Card {...props}>
       <WrapperCardStyled>
@@ -62,7 +63,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
         {sizes ? (
           <>
             <AtomImage image={image} height="216px" />
-            <select name="cars" id="cars">
+            <select name="talla" id="talla">
               {sizes.map((e) => (
                 <option value="">Talla {e}</option>
               ))}
@@ -72,7 +73,9 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
           <AtomImage image={image} height="216px" />
         )}
       </WrapperCardStyled>
-      <AtomTextBody size="16px" margin="11px 0px">{name}</AtomTextBody>
+      <AtomTextBody size="16px" margin="11px 0px">
+        {name}
+      </AtomTextBody>
       <AtomTextBody color="#797B80" size="14px">
         {collection}
       </AtomTextBody>
@@ -96,12 +99,31 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
         </AtomTextBody>
       )}
       {sizes && (
-        <AtomButton onClick={()=> {
-         const newCarShop = carShop;
-         newCarShop.push({image,preci:discount? preci - preci * (discount / 100):preci,name})
-         setCarShop(newCarShop)
-        }} color="#38A6AD" hovercolor="#000000" padding="16px 20px">
-          <AtomTextBody  size="16px" color="#FFFFFF">
+        <AtomButton
+          onClick={() => {
+            // console.log(talla)
+            const newCarShop = carShop;
+            const item = carShop.filter((item) => item.id == id);
+            item.length == 0
+              ? newCarShop.push({
+                  quanti: 1,
+                  id,
+                  image,
+                  preci: discount ? preci - preci * (discount / 100) : preci,
+                  name,
+                })
+              : newCarShop.forEach((item) => {
+                  if (item.id == id) {
+                    item.quanti++;
+                  }
+                });
+            setCarShop(newCarShop);
+          }}
+          color="#38A6AD"
+          hovercolor="#000000"
+          padding="16px 20px"
+        >
+          <AtomTextBody size="16px" color="#FFFFFF">
             Añadir al carrito
           </AtomTextBody>
         </AtomButton>

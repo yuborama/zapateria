@@ -48,7 +48,7 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
             </AtomWrapper>
           ) : (
             carshow.map((e) => (
-              <MoleculeItemList image={e.image} preci={e.preci} name={e.name} />
+              <MoleculeItemList quanti={e.quanti} id={e.id} image={e.image} preci={e.preci} name={e.name} />
             ))
           )}
         </ListDropdowStyled>
