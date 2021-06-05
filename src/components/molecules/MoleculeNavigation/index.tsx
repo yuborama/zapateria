@@ -30,24 +30,38 @@ const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
       >
         <AtomWrapper height="85px" alignItems="center" gap="24px">
           <Link href="/">
-            <AtomTextBody size="18px" color="#FFFFFF" fontweight="Bold" cursorPointer>
-              Forever_19
-            </AtomTextBody>
+            <a>
+              <AtomTextBody
+                size="18px"
+                color="#FFFFFF"
+                fontweight="Bold"
+                cursorPointer
+              >
+                Forever_19
+              </AtomTextBody>
+            </a>
           </Link>
+
           <Link href="/products">
-            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-              Productos
-            </AtomTextBody>
+            <a>
+              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                Productos
+              </AtomTextBody>
+            </a>
           </Link>
           <Link href="/about">
-            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-              Nosotros
-            </AtomTextBody>
+            <a>
+              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                Nosotros
+              </AtomTextBody>
+            </a>
           </Link>
           <Link href="/#Contacto">
-            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-              Contacto
-            </AtomTextBody>
+            <a>
+              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                Contacto
+              </AtomTextBody>
+            </a>
           </Link>
         </AtomWrapper>
         <AtomWrapper alignItems="center" justifyContent="flex-end" gap="24px">
