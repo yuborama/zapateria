@@ -35,41 +35,44 @@ const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
           </AtomTextBody>
         </AtomWrapper>
       </AtomWrapper>
-      <AtomWrapper flexDirection="column" width="18px">
-        <button
-          onClick={() => {
-            const newCarShop = carShop;
-            newCarShop.forEach((item) => {
-              if (item.id == id) {
-                item.quanti++;
-                setCantidad(item.quanti);
-              }
-            });
-          }}
-        >
-          <AtomIcon icon="up" />
-        </button>
-        <AtomTextBody>{Cantidad}</AtomTextBody>
-        <button
-          onClick={() => {
-            if (Cantidad > 1) {
+      <AtomWrapper gap=".5rem" width="auto" alignItems="center">
+        <AtomWrapper flexDirection="column" width="auto" alignItems="center">
+
+          <button
+            onClick={() => {
               const newCarShop = carShop;
               newCarShop.forEach((item) => {
                 if (item.id == id) {
-                  item.quanti--;
+                  item.quanti++;
                   setCantidad(item.quanti);
                 }
               });
-            }
-          }}
-        >
-          <AtomIcon icon="down" />
-        </button>
+            }}
+          >
+            <AtomIcon icon="up" size={5}/>
+          </button>
+          <AtomTextBody>{Cantidad}</AtomTextBody>
+          <button
+            onClick={() => {
+              if (Cantidad > 1) {
+                const newCarShop = carShop;
+                newCarShop.forEach((item) => {
+                  if (item.id == id) {
+                    item.quanti--;
+                    setCantidad(item.quanti);
+                  }
+                });
+              }
+            }}
+          >
+            <AtomIcon icon="down" />
+          </button>
+        </AtomWrapper>
+        <AtomTextBody size="21px" fontweight="Bold" color="red">
+          $ {Intl.NumberFormat().format(preci * Cantidad)} COP
+        </AtomTextBody>
       </AtomWrapper>
 
-      <AtomTextBody size="21px" fontweight="Bold" color="red">
-        $ {Intl.NumberFormat().format(preci * Cantidad)} COP
-      </AtomTextBody>
       <button
         onClick={() => {
           const newCarShop = carShop.filter((item) => item.id != id);
