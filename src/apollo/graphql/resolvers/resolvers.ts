@@ -1,13 +1,13 @@
-import { IContact } from '../interfaces/interfaces';
-import nodemailer from 'nodemailer';
+import { IContact } from "../interfaces/interfaces";
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
+  host: "smtp.gmail.com",
   port: 465,
   secure: true,
   auth: {
-    user: 'Stacklycode@gmail.com',
-    pass: 'Stacklycode77.',
+    user: "Stacklycode@gmail.com",
+    pass: "XHG|d%|/=Y,fc6*|q1d1",
   },
 });
 
@@ -16,7 +16,7 @@ const mailer = ({ input }: IContact) => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
   const messageSend = {
     from,
-    to: 'stacklycode@gmail.com',
+    to: "davidjohan2@hotmail.com",
     subject: `${subject} : Mensaje de ${from} `,
     text: message,
     replyTo: from,
@@ -31,21 +31,21 @@ const mailer = ({ input }: IContact) => {
 const resolvers = {
   Query: {
     getDo: async () => {
-      return 'do';
+      return "do";
     },
   },
   Mutation: {
     newContact: async (_: null, { input }: IContact) => {
       const { email, message, name, subject } = input;
 
-      if (email === '' || name === '' || message === '' || subject === '') {
-        throw new Error('Send All Data');
+      if (email === "" || name === "" || message === "" || subject === "") {
+        throw new Error("Send All Data");
       }
       await mailer({
         input,
       });
 
-      return '200';
+      return "200";
     },
   },
 };

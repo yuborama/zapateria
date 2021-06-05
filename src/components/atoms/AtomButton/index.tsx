@@ -10,6 +10,7 @@ type ButtonProps = {
   margin?: string;
   hovercolor?: string;
   onClick?: () => void;
+  type?: "submit" | "button";
 };
 
 const ButtonStyled = styled.button<ButtonProps>`

@@ -86,20 +86,35 @@ const SectionContact: FC = () => {
           <form onSubmit={formik.handleSubmit}>
             <AtomWrapper width="100%" flexwrap="wrap">
               <AtomInput
+                id="name"
+                formik={formik}
                 label="Nombre"
                 colorLabel="#FFFFFF"
                 margin="0px 30px 0px 0px"
               />
-              <AtomInput label="Asunto" colorLabel="#FFFFFF" />
-              <AtomInput width="90%" label="Email" colorLabel="#FFFFFF" />
               <AtomInput
+                id="subject"
+                formik={formik}
+                label="Asunto"
+                colorLabel="#FFFFFF"
+              />
+              <AtomInput
+                id="email"
+                formik={formik}
+                width="90%"
+                label="Email"
+                colorLabel="#FFFFFF"
+              />
+              <AtomInput
+                id="message"
+                formik={formik}
                 width="90%"
                 label="Mensaje"
                 colorLabel="#FFFFFF"
                 type="textbox"
               />
               {/* <AtomToastNotication content="xxxxxxx" /> */}
-              <AtomButton color="#38A6AD" padding="16px 20px">
+              <AtomButton type="submit" color="#38A6AD" padding="16px 20px">
                 <AtomTextBody size="16px" color="#FFFFFF">
                   Enviar
                 </AtomTextBody>
@@ -121,6 +136,3 @@ const SectionContact: FC = () => {
 };
 
 export default SectionContact;
-function useToasts(): { addToast: any } {
-  throw new Error("Function not implemented.");
-}

@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import InputProps from "./types";
 
 export const LabelStyled = styled.label<InputProps>`
-display: flex;
-flex-direction: column;
-width: ${({ width }) => width || "250px"};
-color: ${({ colorLabel }) => colorLabel || "#47585d"};
-margin: ${({ margin }) => margin || "0px"};
+  display: flex;
+  flex-direction: column;
+  width: ${({ width }) => width || "250px"};
+  color: ${({ colorLabel }) => colorLabel || "#47585d"};
+  margin: ${({ margin }) => margin || "0px"};
 `;
 
 export const InputTextStyled = styled.input<InputProps>`
@@ -31,4 +31,15 @@ export const InputTexareatStyled = styled.textarea<InputProps>`
   padding: 0px 0px 0px 15px;
   font-size: 14px;
   font-weight: 500;
+`;
+
+export const StyledInputError = styled.span`
+  margin: 10px 0px;
+  max-width: 312px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  color: #ff295f;
 `;
