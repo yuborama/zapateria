@@ -70,6 +70,7 @@ const Products: FC = () => {
             {seacrh === ""
               ? Data.data.map((e) => (
                   <MoleculeCard
+                    key={e.id}
                     id={e.id}
                     image={e.image}
                     name={e.name}
@@ -83,6 +84,7 @@ const Products: FC = () => {
                 ))
               : productsShow.map((e) => (
                   <MoleculeCard
+                    key={e.id}
                     id={e.id}
                     image={e.image}
                     name={e.name}

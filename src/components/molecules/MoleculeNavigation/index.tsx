@@ -3,6 +3,7 @@ import AtomIcon from "@Src/components/atoms/AtomIcon";
 import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { FC, useEffect, useState } from "react";
+import Link from "next/link";
 import { Linkstyled, Nav } from "./styled";
 type MoleculeNavigationPros = {};
 const scrollToUp = () => {
@@ -12,6 +13,7 @@ const scrollToUp = () => {
     behavior: `smooth`,
   });
 };
+
 const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
   useEffect(() => {
     scrollToUp();
@@ -27,26 +29,40 @@ const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
         alignItems="center"
       >
         <AtomWrapper height="85px" alignItems="center" gap="24px">
-          <Linkstyled href="/">
-            <AtomTextBody size="18px" color="#FFFFFF" fontweight="Bold" cursorPointer>
-              Forever_19
-            </AtomTextBody>
-          </Linkstyled>
-          <Linkstyled href="/products">
-            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-              Productos
-            </AtomTextBody>
-          </Linkstyled>
-          <Linkstyled href="/about">
-            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-              Nosotros
-            </AtomTextBody>
-          </Linkstyled>
-          <Linkstyled href="/#Contacto">
-            <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
-              Contacto
-            </AtomTextBody>
-          </Linkstyled>
+          <Link href="/">
+            <a>
+              <AtomTextBody
+                size="18px"
+                color="#FFFFFF"
+                fontweight="Bold"
+                cursorPointer
+              >
+                Forever_19
+              </AtomTextBody>
+            </a>
+          </Link>
+
+          <Link href="/products">
+            <a>
+              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                Productos
+              </AtomTextBody>
+            </a>
+          </Link>
+          <Link href="/about">
+            <a>
+              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                Nosotros
+              </AtomTextBody>
+            </a>
+          </Link>
+          <Link href="/#Contacto">
+            <a>
+              <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                Contacto
+              </AtomTextBody>
+            </a>
+          </Link>
         </AtomWrapper>
         <AtomWrapper alignItems="center" justifyContent="flex-end" gap="24px">
           <AtomWrapper width="16px" height="16px">

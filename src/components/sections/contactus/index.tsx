@@ -3,11 +3,13 @@ import AtomContainer from "@Src/components/atoms/AtomContainer";
 import AtomInput from "@Src/components/atoms/AtomInput";
 import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomTextTittle from "@Src/components/atoms/AtomTextTittle";
+import AtomToastNotication from "@Src/components/atoms/AtomToastNotification";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMutation, gql } from "@apollo/client";
-import { FC } from "react";
+import React, { FC } from "react";
+import { useToasts } from "react-toast-notifications";
 
 interface FormValues {
   name: string;
@@ -31,6 +33,7 @@ const NEW_CONTACT = gql`
 
 const SectionContact: FC = () => {
   const [newUser] = useMutation(NEW_CONTACT);
+  const { addToast } = useToasts();
 
   const formik = useFormik({
     initialValues,
@@ -53,6 +56,10 @@ const SectionContact: FC = () => {
         })
         .then(() => {
           location.href = "/";
+          addToast("Se envio con exito su mensaje", {
+            appearance: "success",
+            autoDismiss: true,
+          });
         });
     },
   });
@@ -76,26 +83,29 @@ const SectionContact: FC = () => {
             Tenemos sucursales en toda barranquilla para que puedas comprar tu
             calzado sin tener que tomar una larga distancia.
           </AtomTextBody>
-          <AtomWrapper width="100%" flexwrap="wrap">
-            <AtomInput
-              label="Nombre"
-              colorLabel="#FFFFFF"
-              margin="0px 30px 0px 0px"
-            />
-            <AtomInput label="Asunto" colorLabel="#FFFFFF" />
-            <AtomInput width="90%" label="Email" colorLabel="#FFFFFF" />
-            <AtomInput
-              width="90%"
-              label="Mensaje"
-              colorLabel="#FFFFFF"
-              type="textbox"
-            />
-            <AtomButton color="#38A6AD" padding="16px 20px">
-              <AtomTextBody size="16px" color="#FFFFFF">
-                Enviar
-              </AtomTextBody>
-            </AtomButton>
-          </AtomWrapper>
+          <form onSubmit={formik.handleSubmit}>
+            <AtomWrapper width="100%" flexwrap="wrap">
+              <AtomInput
+                label="Nombre"
+                colorLabel="#FFFFFF"
+                margin="0px 30px 0px 0px"
+              />
+              <AtomInput label="Asunto" colorLabel="#FFFFFF" />
+              <AtomInput width="90%" label="Email" colorLabel="#FFFFFF" />
+              <AtomInput
+                width="90%"
+                label="Mensaje"
+                colorLabel="#FFFFFF"
+                type="textbox"
+              />
+              {/* <AtomToastNotication content="xxxxxxx" /> */}
+              <AtomButton color="#38A6AD" padding="16px 20px">
+                <AtomTextBody size="16px" color="#FFFFFF">
+                  Enviar
+                </AtomTextBody>
+              </AtomButton>
+            </AtomWrapper>
+          </form>
         </AtomWrapper>
         <AtomWrapper width="40%" height="500px" backgroudColor="#FFFFFF">
           <iframe
@@ -111,3 +121,6 @@ const SectionContact: FC = () => {
 };
 
 export default SectionContact;
+function useToasts(): { addToast: any } {
+  throw new Error("Function not implemented.");
+}

@@ -74,7 +74,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
             >
               <option value="defaul">selecione.</option>
               {sizes.map((e) => (
-                <option value={e}>Talla {e}</option>
+                <option key={e} value={e}>Talla {e}</option>
               ))}
             </select>
           </>
@@ -113,18 +113,18 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
             if (size !== "default") {
               console.log(size)
               const newCarShop = carShop;
-              const item = carShop.filter((item) => item.id == id && item.size==size);
+              const item = carShop.filter((item) => item.id == `${id} ${size}`);
               item.length == 0
                 ? newCarShop.push({
                     quanti: 1,
-                    id: id || "0",
+                    id: `${id} ${size}` || "0",
                     image,
                     preci: discount ? preci - preci * (discount / 100) : preci,
                     name,
                     size
                   })
                 : newCarShop.forEach((item) => {
-                    if (item.id == id) {
+                    if (item.id == `${id} ${size}`) {
                       item.quanti++;
                     }
                   });
