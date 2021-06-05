@@ -55,11 +55,11 @@ const SectionContact: FC = () => {
           throw new Error(error.message);
         })
         .then(() => {
-          location.href = "/";
           addToast("Se envio con exito su mensaje", {
             appearance: "success",
             autoDismiss: true,
           });
+          location.href = "/";
         });
     },
   });

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {css} from "@emotion/react";
 import { FC } from "react";
 
 type ButtonProps = {
@@ -11,14 +12,19 @@ type ButtonProps = {
   hovercolor?: string;
   onClick?: () => void;
   type?: "submit" | "button";
+  border?: string;
+  cursorPointer?: boolean;
 };
+
 
 const ButtonStyled = styled.button<ButtonProps>`
   background-color: ${({ outline, color }) =>
     outline ? "transparent" : color};
   padding: ${({ padding }) => padding || "3px"};
   margin: ${({ margin }) => margin || "0px"};
-  border: 1px solid ${({ color }) => color || "black"};
+  border: ${({ border }) => border || "1px"} solid
+    ${({ color }) => color || "black"};
+    ${({cursorPointer}) => (cursorPointer && css`cursor: pointer;`)};
   &:hover {
     background-color: ${({ outline, color, hovercolor }) =>
       outline ? hovercolor || color : hovercolor || "transparent"};

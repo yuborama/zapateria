@@ -5,6 +5,8 @@ import AtomWrapper from "@Src/components/atoms/AtomWrapper";
 import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Linkstyled, Nav } from "./styled";
+import AtomButton from "@Src/components/atoms/AtomButton";
+import { useToasts } from "react-toast-notifications";
 type MoleculeNavigationPros = {};
 const scrollToUp = () => {
   document.body.scrollTo({
@@ -17,9 +19,8 @@ const scrollToUp = () => {
 const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
   useEffect(() => {
     scrollToUp();
-    console.log("hola, willy puto");
   }, []);
-
+  const { addToast } = useToasts();
   const { children } = props;
   return (
     <Nav>
@@ -79,7 +80,23 @@ const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
             </a>
           </AtomWrapper>
           <AtomWrapper width="16px" height="16px">
-            <AtomIcon icon="telefono" />
+            <AtomButton
+              cursorPointer
+              border="0"
+              margin="0"
+              padding="0"
+              onClick={async () => {
+                await navigator.clipboard.writeText("3219729519");
+                addToast("Se ha copia el numero en el portapapeles", {
+                  placement: "bottom-left",
+                  appearance: "info",
+                  autoDismiss: true,
+                });
+              }}
+              color="#252628"
+            >
+              <AtomIcon icon="telefono" />
+            </AtomButton>
           </AtomWrapper>
           <AtomWrapper width="16px" height="16px">
             <a
