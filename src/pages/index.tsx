@@ -63,36 +63,47 @@ const index: FC = () => {
           click y con los mejores precios.
         </AtomTextBody>
         <AtomWrapper display="grid" columns={4}>
-          {Data.data.map((e) => (
-            <MoleculeCard
-              id = {e.id}
-              image={e.image}
-              name={e.name}
-              collection={e.collection}
-              preci={e.preci}
-              width="307px"
-              margin="12px 10px"
-            />
-          ))}
-          {Data.discount.map((e) => (
-            <MoleculeCard
-              id= {e.id}
-              image={e.image}
-              name={e.name}
-              collection={e.collection}
-              preci={e.preci}
-              width="307px"
-              margin="12px 10px"
-              discount={e.discount}
-            />
-          ))}
+          {Data.discount.map((e, i) => {
+            console.log(i);
+            if (i < 4) {
+              return (
+                <MoleculeCard
+                  key={e.id}
+                  id={e.id}
+                  image={e.image}
+                  name={e.name}
+                  collection={e.collection}
+                  preci={e.preci}
+                  width="307px"
+                  margin="12px 10px"
+                  discount={e.discount}
+                />
+              );
+            }
+          })}
+          {Data.data.map((e, i) => {
+            if (i < 4) {
+              return (
+                <MoleculeCard
+                  key={e.id}
+                  id={e.id}
+                  image={e.image}
+                  name={e.name}
+                  collection={e.collection}
+                  preci={e.preci}
+                  width="307px"
+                  margin="12px 10px"
+                />
+              );
+            }
+          })}
         </AtomWrapper>
         <Link href="/products">
-        <AtomButton color="#38A6AD" padding="16px 20px">
-          <AtomTextBody size="16px" color="#FFFFFF">
-            Ver productos
-          </AtomTextBody>
-        </AtomButton>
+          <AtomButton color="#38A6AD" padding="16px 20px">
+            <AtomTextBody size="16px" color="#FFFFFF">
+              Ver productos
+            </AtomTextBody>
+          </AtomButton>
         </Link>
       </AtomContainer>
       <SectionContact />
