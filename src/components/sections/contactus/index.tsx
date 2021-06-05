@@ -4,11 +4,58 @@ import AtomInput from "@Src/components/atoms/AtomInput";
 import AtomTextBody from "@Src/components/atoms/AtomTextBody";
 import AtomTextTittle from "@Src/components/atoms/AtomTextTittle";
 import AtomWrapper from "@Src/components/atoms/AtomWrapper";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useMutation, gql } from "@apollo/client";
 import { FC } from "react";
 
-type SectionContactProps = {};
+interface FormValues {
+  name: string;
+  subject: string;
+  email: string;
+  message: string;
+}
 
-const SectionContact: FC<SectionContactProps> = () => {
+const initialValues: FormValues = {
+  name: "",
+  subject: "",
+  email: "",
+  message: "",
+};
+
+const NEW_CONTACT = gql`
+  mutation($input: ContactInput) {
+    newContact(input: $input)
+  }
+`;
+
+const SectionContact: FC = () => {
+  const [newUser] = useMutation(NEW_CONTACT);
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: Yup.object({
+      name: Yup.string().required("Por favor, ingrese un Nombre."),
+      subject: Yup.string().required("Por favor, ingrese un Sujeto."),
+      email: Yup.string()
+        .email("Debe ingresar un correo válido")
+        .required("Por favor, ingrese un correo."),
+      message: Yup.string().required("Por favor, ingrese un Mensage."),
+    }),
+    onSubmit: async (valores) => {
+      await newUser({
+        variables: {
+          input: valores,
+        },
+      })
+        .catch((error) => {
+          throw new Error(error.message);
+        })
+        .then(() => {
+          location.href = "/";
+        });
+    },
+  });
   return (
     <>
       <AtomContainer
