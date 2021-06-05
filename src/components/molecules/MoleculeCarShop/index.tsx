@@ -14,7 +14,14 @@ import {
 } from "react";
 import MoleculeItemList from "../MoleculeItemList";
 import { ListDropdowStyled } from "./styled";
+import { useToasts } from "react-toast-notifications";
 
+const stylebutton = {
+  with: "85px",
+  cursor: "pointer",
+  background: "none",
+  border: "none",
+};
 type MoleculeCarShopProps = {};
 
 function useOutsideAlerter(
@@ -38,6 +45,7 @@ function useOutsideAlerter(
 const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
   const [Dropdown, setDropdown] = useState(false);
   const { carShop, setCarShop } = useContext(ContextCar);
+  const { addToast } = useToasts();
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setDropdown);
   const [carshow, setcarshow] = useState<ItemCarShopProps[]>([]);
@@ -47,8 +55,15 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
 
   return (
     <>
-      <AtomWrapper width="200px">
-        <button ref={wrapperRef} onClick={() => setDropdown(!Dropdown)}>
+      <AtomWrapper width="auto">
+        {/* <AtomButton>
+          <AtomIcon icon="carshop"  width="85px"/>
+        </AtomButton> */}
+        <button
+          ref={wrapperRef}
+          onClick={() => setDropdown(!Dropdown)}
+          style={stylebutton}
+        >
           <AtomIcon icon="carshop" />
         </button>
       </AtomWrapper>
@@ -64,10 +79,14 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
               <AtomTextBody>No hay productos en el carrito</AtomTextBody>
             </AtomWrapper>
           ) : (
-            <AtomWrapper flexDirection="column">
+            <AtomWrapper
+              flexDirection="column"
+              backgroudColor="#E2E0E0"
+              alignItems="center"
+            >
               {carshow.map((e) => (
                 <MoleculeItemList
-                  key={e.id+e.size} 
+                  key={e.id + e.size}
                   size={e.size}
                   quanti={e.quanti}
                   id={e.id}
@@ -76,7 +95,26 @@ const MoleculeCarShop: FC<MoleculeCarShopProps> = () => {
                   name={e.name}
                 />
               ))}
-              <AtomButton>Realizar compra</AtomButton>
+              <AtomButton
+                margin="10px"
+                color="#38A6AD"
+                hovercolor="#184447"
+                padding="16px 20px"
+                onClick={() => {
+                  addToast(
+                    "Felicidades su compra se ha realizado satisfactoriamente",
+                    {
+                      appearance: "success",
+                      autoDismiss: true,
+                    }
+                  );
+                  setCarShop([]);
+                }}
+              >
+                <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
+                  Realizar compra
+                </AtomTextBody>
+              </AtomButton>
             </AtomWrapper>
           )}
         </ListDropdowStyled>
