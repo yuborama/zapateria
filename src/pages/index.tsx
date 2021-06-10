@@ -27,84 +27,10 @@ type Data = {
 };
 
 const index: FC = () => {
-    const DataFake = async () => {
-      const data: DataGetProps[] = await fetch("/Data.json")
-        .then((response) => response.json())
-        .then((data) => data);
-      setData({
-        data: data.filter((e) => !e.discount),
-        discount: data.filter((e) => e.discount),
-      });
-    };
-    DataFake();
-  }, []);
-  console.log(Data);
+
   return (
     <>
-      <MoleculeNavigation></MoleculeNavigation>
-      <SectionWelcome />
-      <AtomContainer
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        padding="91px 79px 40px 79px"
-      >
-        <AtomTextTittle as="h2" size="40px" fontweight="Bold">
-          Productos
-        </AtomTextTittle>
-        <AtomTextBody
-          size="24px"
-          fontweight="Medium"
-          margin="16px 245px 56px 245px"
-        >
-          Las mejores marcas del mercado disponible para ti, al alcance de un
-          click y con los mejores precios.
-        </AtomTextBody>
-        <AtomWrapper display="grid" columns={4}>
-          {Data.discount.map((e, i) => {
-            console.log(i);
-            if (i < 4) {
-              return (
-                <MoleculeCard
-                  key={e.id}
-                  id={e.id}
-                  image={e.image}
-                  name={e.name}
-                  collection={e.collection}
-                  preci={e.preci}
-                  width="307px"
-                  margin="12px 10px"
-                  discount={e.discount}
-                />
-              );
-            }
-          })}
-          {Data.data.map((e, i) => {
-            if (i < 4) {
-              return (
-                <MoleculeCard
-                  key={e.id}
-                  id={e.id}
-                  image={e.image}
-                  name={e.name}
-                  collection={e.collection}
-                  preci={e.preci}
-                  width="307px"
-                  margin="12px 10px"
-                />
-              );
-            }
-          })}
-        </AtomWrapper>
-        <Link href="/products">
-          <AtomButton color="#38A6AD" padding="16px 20px">
-            <AtomTextBody size="16px" color="#FFFFFF">
-              Ver productos
-            </AtomTextBody>
-          </AtomButton>
-        </Link>
-      </AtomContainer>
-      <SectionContact />
+    <h1>Fuera de servicio</h1> 
     </>
   );
 };
