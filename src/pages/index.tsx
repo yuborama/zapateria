@@ -27,8 +27,6 @@ type Data = {
 };
 
 const index: FC = () => {
-  const [Data, setData] = useState<Data>({ data: [], discount: [] });
-  useEffect(() => {
     const DataFake = async () => {
       const data: DataGetProps[] = await fetch("/Data.json")
         .then((response) => response.json())
