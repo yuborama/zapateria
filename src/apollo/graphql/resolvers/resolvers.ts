@@ -3,8 +3,9 @@ import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  ignoreTLS: false,
+  secure: false,
   auth: {
     user: "johandavidperezgil2@gmail.com",
     pass: "johan88hotmail.com",
@@ -16,7 +17,7 @@ const mailer = ({ input }: IContact) => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
   const messageSend = {
     from,
-    to: "colorf44@gmail.com",
+    to: "davidjohan2@hotmail.com",
     subject: `${subject} : Mensaje de ${from} `,
     text: message,
     replyTo: from,
