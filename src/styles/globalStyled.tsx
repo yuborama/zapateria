@@ -24,6 +24,7 @@ const GlobalStyles = () => (
         background-color: #fafafa;
         overflow-x: hidden;
         margin-top: 85px;
+        font-family: 'Inter';
       }
 
       blockquote,

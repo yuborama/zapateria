@@ -10,16 +10,11 @@ type textbodyProps = {
   padding?: string;
   cursorPointer?: boolean;
   linethrough?: boolean;
+  textaling?: "center"| "left" |"right"|"justify";
   fontweight?:
-    | "Thin"
-    | "Extra-ligth"
-    | "Ligth"
-    | "Regular"
-    | "Medium"
-    | "Semi-bold"
-    | "Bold"
-    | "Extra-bold"
-    | "Black";
+    | "400"
+    | "500"
+    | "700";
 };
 
 const Component = styled.p<textbodyProps>`
@@ -27,12 +22,13 @@ const Component = styled.p<textbodyProps>`
   margin: 0;
   font-size: ${({ size }) => size || "24px"};
   color: ${({ color }) => color || "#3C3E42"};
-  font-weight: ${({ fontweight }) => fontweight || "Thin"};
+  font-weight: ${({ fontweight }) => fontweight || "400"};
   opacity: ${({ opacity }) => opacity || 100};
   margin: ${({ margin }) => margin || "0px"};
   padding: ${({ padding }) => padding || "0px"};
   ${({cursorPointer}) => (cursorPointer && css`cursor: pointer;`)}
   ${({linethrough})=>(linethrough && css`text-decoration:line-through;`)}  
+  text-align: ${({ textaling }) => textaling || "left"};
 `;
 
 const AtomTextBody: FC<textbodyProps> = (props) => {

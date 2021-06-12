@@ -5,7 +5,7 @@ type texttittleProps = {
   size?: string;
   color?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  fontweight?: "Thin" |"Extra-ligth" | "Ligth" | "Regular" | "Medium" | "Semi-bold" | "Bold" | "Extra-bold"| "Black"
+  fontweight?: "400" |"500"|"700";
   margin?: string;
   padding?: string;
 };
@@ -16,7 +16,8 @@ const Component = styled.h1<texttittleProps>`
   color: ${({ color }) => color || "#3C3E42"};
   margin: ${({ margin }) => margin || "0px"};
   padding: ${({ padding }) => padding || "0px"};
-  font-weight:${({fontweight}) => fontweight || "Thin"} ;
+  font-weight:${({fontweight}) => fontweight || "400"} ;
+  line-height: 1.5;
 `;
 
 const AtomTextTittle: FC<texttittleProps> = (props) => {

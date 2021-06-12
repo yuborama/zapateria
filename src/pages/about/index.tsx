@@ -11,8 +11,8 @@ const AboutPage: FC<Props> = () => {
   return (
     <>
    <MoleculeNavigation/>
-    <AtomContainer flexDirection="column" padding="100px 80px">
-      <AtomWrapper flexDirection="column" gap="16px" margin="100px 0px 66px 0px">
+    <AtomContainer flexDirection="column">
+      <AtomWrapper flexDirection="column" gap="16px" padding="0px 80px" margin="100px 0px 66px 0px">
         <AtomTextTittle size="40px">¿QUIENES SOMOS?</AtomTextTittle>
         <AtomTextBody>
           Somos una empresa que se dedica a la venta de zapatos de manera
@@ -26,7 +26,7 @@ const AboutPage: FC<Props> = () => {
           características del calzado que desea la comunidad.
         </AtomTextBody>
       </AtomWrapper>
-      <AtomWrapper flexDirection="column" backgroudColor="#252628" padding="85px 0px 127px 0px" gap="16px" width="100%">
+      <AtomWrapper flexDirection="column" backgroudColor="#252628" padding="85px 80px 127px 80px" gap="16px" width="100%">
         <AtomTextTittle color="#FFFFFF">MISION</AtomTextTittle>
         <AtomTextBody color="#FFFFFF">
           Nuestra misión es brindar un calzado con el cual nuestros clientes se
@@ -38,11 +38,11 @@ const AboutPage: FC<Props> = () => {
         Forevers19 tiene el propósito de conseguir calzado ampliamente deseado por el consumidor, siendo reconocida a nivel nacional e internacional como la mejor empresa en la industria de calzado deportivo por lo que estamos comprometidos con la calidad y eficiencia del producto teniendo un alto estándar en la comodidad de nuestros clientes.
         </AtomTextBody>
       </AtomWrapper>
-      <AtomWrapper flexDirection="column" id="">
+      <AtomWrapper flexDirection="column" padding="85px 80px 127px 80px">
           <AtomTextTittle>
           OBJETIVOS CORPORATIVOS 
           </AtomTextTittle>
-          <AtomTextBody>
+          <AtomTextBody padding="0 30px">
               <ol>
                   <li>Producir empleo para los ciudadanos de nuestra región </li>
                   <li>Satisfacer las necesidades y expectativas de nuestros clientes</li>

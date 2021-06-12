@@ -15,21 +15,21 @@ const SectionWelcome: FC<SectionWelcomeProps> = () => {
       <AtomContainer
         flexDirection="row"
         backgroudColor="#252628"
-        padding="20px 80px"
+        padding="20px 0 0 0"
         justifyContent="center"
         alignItems="center"
       >
-        <AtomWrapper flexDirection="column">
-          <AtomTextTittle as="h1" size="36px" color="#FFFFFF" fontweight="Bold">
+        <AtomWrapper flexDirection="column" width="635px">
+          <AtomTextTittle as="h1" size="36px" color="#FFFFFF" fontweight="700" margin="0 0 24px 0">
             El mejor lugar para encontrar el calzado que deseas.
           </AtomTextTittle>
-          <AtomTextBody size="24px" color="#FFFFFF" opacity={0.33}>
+          <AtomTextBody size="24px" color="#FFFFFF" opacity={0.77}>
             No importa la ocasión, en Forever_19 tenemos las mejores marcas del
             mercado para todos los gustos y edades.
           </AtomTextBody>
           <AtomWrapper margin="32px 0px 0px 0px">
             <Link href="/products">
-              <AtomButton color="#38A6AD" padding="16px 20px">
+              <AtomButton color="#38A6AD" hovercolor="#246e74"  padding="16px 20px">
                 <AtomTextBody size="16px" color="#FFFFFF" cursorPointer>
                   Ver nuestros productos
                 </AtomTextBody>
@@ -39,6 +39,8 @@ const SectionWelcome: FC<SectionWelcomeProps> = () => {
               <AtomButton
                 color="#FFFFFF"
                 outline
+                hovercolor="#FFFFFF"
+                texthover="#000000"
                 padding="16px 32px"
                 margin="0px 0px 0px 16px"
               >

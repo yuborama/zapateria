@@ -14,6 +14,7 @@ type ButtonProps = {
   type?: "submit" | "button";
   border?: string;
   cursorPointer?: boolean;
+  texthover?: string;
 };
 
 
@@ -28,6 +29,9 @@ const ButtonStyled = styled.button<ButtonProps>`
   &:hover {
     background-color: ${({ outline, color, hovercolor }) =>
       outline ? hovercolor || color : hovercolor || "transparent"};
+    p{
+      ${({texthover}) => (texthover && css`color: ${texthover};`)};
+    }
   }
 `;
 

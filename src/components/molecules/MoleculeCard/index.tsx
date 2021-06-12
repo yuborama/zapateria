@@ -58,7 +58,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
       <WrapperCardStyled>
         {discount && (
           <Icon icon="discount" rotate={-45} width="72px">
-            <AtomTextBody size="10px" fontweight="Bold">
+            <AtomTextBody size="10px" fontweight="700">
               {discount || 0}%
             </AtomTextBody>
           </Icon>
@@ -92,18 +92,18 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
         <AtomWrapper margin="11px 0px">
           <AtomTextBody
             size="14px"
-            fontweight="Bold"
+            fontweight="700"
             margin="0px 10px 0px 0px"
             linethrough
           >
             $ {Intl.NumberFormat().format(preci)} COP
           </AtomTextBody>
-          <AtomTextBody size="14px" fontweight="Bold" color="red">
+          <AtomTextBody size="14px" fontweight="700" color="red">
             $ {Intl.NumberFormat().format(preci - preci * (discount / 100))} COP
           </AtomTextBody>
         </AtomWrapper>
       ) : (
-        <AtomTextBody size="14px" fontweight="Bold" margin="11px 0px">
+        <AtomTextBody size="14px" fontweight="700" margin="11px 0px">
           $ {Intl.NumberFormat().format(preci)} COP
         </AtomTextBody>
       )}
@@ -132,7 +132,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
             }
           }}
           color="#38A6AD"
-          hovercolor="#000000"
+          hovercolor="#246e74"
           padding="16px 20px"
         >
           <AtomTextBody size="16px" color="#FFFFFF">

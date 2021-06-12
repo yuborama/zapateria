@@ -72,12 +72,12 @@ const SectionContact: FC = () => {
         justifyContent="space-between"
       >
         <AtomWrapper width="50%" flexDirection="column">
-          <AtomTextTittle color="#FFFFFF" as="h2">
+          <AtomTextTittle color="#FFFFFF" as="h2" fontweight="700">
             Nosotros
           </AtomTextTittle>
-          <AtomTextBody color="#FFFFFF" size="24px">
+          <AtomTextBody color="#FFFFFF" size="24px" fontweight="400">
             Las mejores marcas del mercado disponible para ti, al alcance de un
-            click y con los mejores precios.
+            click y con los mejores <span>precios.</span>
           </AtomTextBody>
           <AtomTextBody color="#FFFFFF">
             Tenemos sucursales en toda barranquilla para que puedas comprar tu
@@ -114,7 +114,7 @@ const SectionContact: FC = () => {
                 type="textbox"
               />
               {/* <AtomToastNotication content="xxxxxxx" /> */}
-              <AtomButton type="submit" color="#38A6AD" padding="16px 20px">
+              <AtomButton type="submit" color="#38A6AD" hovercolor="#246e74" padding="16px 20px">
                 <AtomTextBody size="16px" color="#FFFFFF">
                   Enviar
                 </AtomTextBody>

@@ -51,13 +51,14 @@ const index: FC = () => {
         alignItems="center"
         padding="91px 79px 40px 79px"
       >
-        <AtomTextTittle as="h2" size="40px" fontweight="Bold">
+        <AtomTextTittle as="h2" size="40px" fontweight="500">
           Productos
         </AtomTextTittle>
         <AtomTextBody
           size="24px"
-          fontweight="Medium"
+          fontweight="500"
           margin="16px 245px 56px 245px"
+          textaling="center"
         >
           Las mejores marcas del mercado disponible para ti, al alcance de un
           click y con los mejores precios.
@@ -99,7 +100,7 @@ const index: FC = () => {
           })}
         </AtomWrapper>
         <Link href="/products">
-          <AtomButton color="#38A6AD" padding="16px 20px">
+          <AtomButton color="#38A6AD" hovercolor="#246e74" padding="16px 20px">
             <AtomTextBody size="16px" color="#FFFFFF">
               Ver productos
             </AtomTextBody>

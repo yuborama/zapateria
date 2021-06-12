@@ -35,7 +35,7 @@ const MoleculeNavigation: FC<MoleculeNavigationPros> = (props) => {
               <AtomTextBody
                 size="18px"
                 color="#FFFFFF"
-                fontweight="Bold"
+                fontweight="700"
                 cursorPointer
               >
                 Forever_19
