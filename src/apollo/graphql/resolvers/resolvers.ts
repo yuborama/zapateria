@@ -16,7 +16,7 @@ const mailer = ({ input }: IContact) => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
   const messageSend = {
     from,
-    to: "davidjohan2@hotmail.com",
+    to: "colorf44@gmail.com",
     subject: `${subject} : Mensaje de ${from} `,
     text: message,
     replyTo: from,
