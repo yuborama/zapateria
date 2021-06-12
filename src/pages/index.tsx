@@ -27,7 +27,20 @@ type Data = {
 };
 
 const index: FC = () => {
-
+  const [Data, setData] = useState<Data>({ data: [], discount: [] });
+  useEffect(() => {
+    const DataFake = async () => {
+      const data: DataGetProps[] = await fetch("/Data.json")
+        .then((response) => response.json())
+        .then((data) => data);
+      setData({
+        data: data.filter((e) => !e.discount),
+        discount: data.filter((e) => e.discount),
+      });
+    };
+    DataFake();
+  }, []);
+  console.log(Data);
   return (
     <>
       <MoleculeNavigation></MoleculeNavigation>
