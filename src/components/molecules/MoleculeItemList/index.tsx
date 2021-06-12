@@ -23,14 +23,14 @@ const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
     <ItemListStyled>
       <AtomImage image={image} width="136px" height="96px" />
       <AtomWrapper flexDirection="column" justifyContent="center" width="220px">
-        <AtomTextBody size="16px" fontweight="Bold">
+        <AtomTextBody size="16px" fontweight="700">
           {name}
         </AtomTextBody>
         <AtomWrapper gap=".3rem">
-          <AtomTextBody size="14px" fontweight="Bold" color="red">
+          <AtomTextBody size="14px" fontweight="700" color="red">
             $ {Intl.NumberFormat().format(preci)} COP
           </AtomTextBody>
-          <AtomTextBody size="14px" fontweight="Bold" color="#0000000">
+          <AtomTextBody size="14px" fontweight="700" color="#0000000">
             Talla {size}
           </AtomTextBody>
         </AtomWrapper>
@@ -68,7 +68,7 @@ const MoleculeItemList: FC<MoleculeItemListProps> = (props) => {
             <AtomIcon icon="down" />
           </button>
         </AtomWrapper>
-        <AtomTextBody size="21px" fontweight="Bold" color="red">
+        <AtomTextBody size="21px" fontweight="700" color="red">
           $ {Intl.NumberFormat().format(preci * Cantidad)} COP
         </AtomTextBody>
       </AtomWrapper>
