@@ -111,7 +111,7 @@ const MoleculeCard: FC<MoleculeCardProps> = (props) => {
         <AtomButton
           onClick={() => {
             if (size !== "default") {
-              console.log(size)
+              console.log(size)        
               const newCarShop = carShop;
               const item = carShop.filter((item) => item.id == `${id} ${size}`);
               item.length == 0
