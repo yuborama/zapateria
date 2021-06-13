@@ -2,31 +2,41 @@ import { IContact } from "../interfaces/interfaces";
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  ignoreTLS: false,
+  host: "smtp.mailgun.org",
   secure: false,
   auth: {
-    user: 'Stacklycode@gmail.com',
-    pass: 'XHG|d%|/=Y,fc6*|q1d1',
+    user: 'postmaster@forever19.online',
+    pass: '5b501b8fe96eab1a456d17cd8989e76d-90ac0eb7-56664073',
   },
 });
 
-const mailer = ({ input }: IContact) => {
+const mailer = async ({ input }: IContact) => {
   const { email, name, message, subject } = input;
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
+  // let info = await transporter.sendMail({
+  //   from: `"Fred Foo 👻" <${email}>`, // sender address
+  //   to: "davidjohan2@hotmail.com", // list of receivers
+  //   subject:  `${subject} : Mensaje de ${from} `, // Subject line
+  //   text: message, // plain text body
+  //   html: "<b>Hello world?</b>", // html body
+  // });
+  let info = await transporter.sendMail({
+    from: `"Forever_19 👻" <${email}>`, // sender address
+    to: "davidjohan2@hotmail.com", // list of receivers
+    subject: `${subject}`, // Subject line
+    text: `${message}`, // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+
   const messageSend = {
-    from,
+    from: "postmaster@forever19.online",
     to: "davidjohan2@hotmail.com",
     subject: `${subject} : Mensaje de ${from} `,
     text: message,
     replyTo: from,
   };
-  return new Promise((resolve, reject) => {
-    transporter.sendMail(messageSend, (error, info) =>
-      error ? reject(error) : resolve(info)
-    );
-  });
 };
 
 const resolvers = {
