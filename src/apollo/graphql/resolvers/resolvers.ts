@@ -23,10 +23,9 @@ const mailer = async ({ input }: IContact) => {
   // });
   let info = await transporter.sendMail({
     from: `"Forever_19 👻" <${email}>`, // sender address
-    to: "davidjohan2@hotmail.com", // list of receivers
+    to: "colorf44@gmail.com", // list of receivers
     subject: `${subject}`, // Subject line
     text: `${message}`, // plain text body
-    html: "<b>Hello world?</b>", // html body
   });
 
   console.log("Message sent: %s", info.messageId);
