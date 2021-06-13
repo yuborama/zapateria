@@ -26,7 +26,6 @@ const mailer = async ({ input }: IContact) => {
     to: "davidjohan2@hotmail.com", // list of receivers
     subject: `${subject}`, // Subject line
     text: `${message}`, // plain text body
-    html: "<b>Hello world?</b>", // html body
   });
 
   console.log("Message sent: %s", info.messageId);
