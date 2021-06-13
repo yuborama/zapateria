@@ -3,8 +3,9 @@ import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  ignoreTLS: false,
+  secure: false,
   auth: {
     user: 'Stacklycode@gmail.com',
     pass: 'XHG|d%|/=Y,fc6*|q1d1',
