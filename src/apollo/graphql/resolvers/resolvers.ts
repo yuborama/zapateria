@@ -2,11 +2,12 @@ import { IContact } from "../interfaces/interfaces";
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.mailgun.org",
-  secure: false,
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: 'postmaster@forever19.online',
-    pass: '5b501b8fe96eab1a456d17cd8989e76d-90ac0eb7-56664073',
+    user: 'shoesforever19@gmail.com',
+    pass: 'Color0106*',
   },
 });
 
